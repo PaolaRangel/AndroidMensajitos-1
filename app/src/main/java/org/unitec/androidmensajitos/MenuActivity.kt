@@ -202,4 +202,35 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             //NO enviamos nada en el caso de buscar todos
         }
     }
+     inner class BuscarMnesajePorId:AsyncTask<Void, Void, Void>(){
+
+        override fun onPostExecute(result: Void?) {
+            super.onPostExecute(result)
+
+            Toast.makeText(applicationContext,
+                    "Registros "+mensajes.size,Toast.LENGTH_LONG).show();
+        }
+
+        override fun doInBackground(vararg p0: Void?): Void? {
+
+            var url2="https://jc-elementos.herokuapp.com/api/mensaje/"+"1"
+
+            val restTemplate = RestTemplate()
+            restTemplate.messageConverters.add(MappingJackson2HttpMessageConverter())
+
+            val maper = ObjectMapper()
+            val respuesta = restTemplate.getForObject(url2,  String::class.java)
+            mensaje = maper.readValue(respuesta, object;TypeReference Mensaje::java.class(){})
+
+
+            println("DESPUES DE REST");
+            return null
+        }
+
+
+        override fun onPreExecute() {
+            super.onPreExecute()
+            //NO enviamos nada en el caso de buscar todos
+        }
+    }
 }
