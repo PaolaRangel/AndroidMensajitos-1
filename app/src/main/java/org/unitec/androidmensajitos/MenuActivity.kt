@@ -208,7 +208,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onPostExecute(result)
 
             Toast.makeText(applicationContext,
-                    "Registros "+mensajes.size,Toast.LENGTH_LONG).show();
+                    "El mensaje es $mensaje.cuerpo ",Toast.LENGTH_LONG).show();
         }
 
         override fun doInBackground(vararg p0: Void?): Void? {
@@ -230,7 +230,7 @@ class MenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         override fun onPreExecute() {
             super.onPreExecute()
-            //NO enviamos nada en el caso de buscar todos
+            //Prepearamos el Id 
         }
     }
 }
